@@ -1,0 +1,221 @@
+/* reset css */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* reset css */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.new-todo-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  width: 300px;
+}
+
+.new-todo-input {
+  padding: 4px 6px;
+}
+
+.new-todo-textarea {
+  margin-top: 20px;
+  resize: vertical;
+  padding: 4px 6px;
+  max-height: 400px;
+}
+
+.new-todo-button {
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.todos {
+  margin-top: 50px;
+}
+
+.todo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 60px;
+  width: 300px;
+  border: 1px solid black;
+  padding: 8px;
+  margin-top: 20px;
+}
+
+.todo:first-of-type {
+  margin-top: 0;
+}
+
+.status-form {
+  margin-right: 8px;
+}
+
+.todo-name {
+  max-width: 232px;
+}
+
+.todo-description {
+  margin-top: 4px;
+}
+
+.delete-form {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.delete-button {
+  all: unset;
+  outline: revert;
+  cursor: pointer;
+}
+
+.delete-image {
+  width: 16px;
+  height: 18px;
+}
+
+.edit-wrapper {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+}
+
+.edit-image {
+  width: 16px;
+  height: 18px;
+}
