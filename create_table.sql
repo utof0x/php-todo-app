@@ -4,4 +4,4 @@ CREATE TABLE `sql_todo`.`todos` (
   `description` VARCHAR(1024) NULL,
   `creation_date` DATETIME NOT NULL,
   `status` BOOLEAN NOT NULL DEFAULT 0,
-  PRIMARY KEY (`todo`));
+  PRIMARY KEY (`id`));
