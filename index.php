@@ -1,3 +1,10 @@
+<?php
+
+$connection = require_once './connection.php';
+$todos = $connection->getTodos();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,29 +16,31 @@
 <body>
   <div class="content">
     <h1 class="title">TODO app</h1>
-    <form class="new-todo-form">
-      <input class="new-todo-input" type="text" name="" placeholder="Task name">
-      <textarea class="new-todo-textarea" type="text" name="" placeholder="Task description" ></textarea>
+    <form class="new-todo-form" action="add_todo.php" method="post">
+      <input class="new-todo-input" type="text" name="name" placeholder="Task name">
+      <textarea class="new-todo-textarea" type="text" name="description" placeholder="Task description" ></textarea>
       <button class="new-todo-button">Create task</button>
     </form>
     <div class="todos">
-      <div class="todo">
-        <form class="status-form">
-          <input type="checkbox" checked>
-        </form>
-        <div>
-          <h3 class="todo-name">Name example</h3>
-          <div class="todo-description">description example</div>
-          <form class="delete-form">
-            <button class="delete-button">
-              <img class="delete-image" alt="Trash can" src="./trash-can.svg" />
-            </button>
+      <?php foreach($todos as $todo):?>
+        <div class="todo">
+          <form class="status-form">
+            <input type="checkbox" checked>
           </form>
-          <a href="" class="edit-wrapper">
-            <img class="edit-image" alt="Trash can" src="./edit.svg" />
-          </a>
+          <div>
+            <h3 class="todo-name"><?php echo $todo['name']?></h3>
+            <div class="todo-description"><?php echo $todo['description']?></div>
+            <form class="delete-form">
+              <button class="delete-button">
+                <img class="delete-image" alt="Trash can" src="./trash-can.svg" />
+              </button>
+            </form>
+            <a href="" class="edit-wrapper">
+              <img class="edit-image" alt="Trash can" src="./edit.svg" />
+            </a>
+          </div>
         </div>
-      </div>
+      <?php endforeach; ?>
     </div>
   </div>
 </body>
