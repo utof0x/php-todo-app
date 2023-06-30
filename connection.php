@@ -30,6 +30,13 @@ class Connection {
     $statement->bindValue('id', $id);
     return $statement->execute();
   }
+
+  public function setTodoStatus($id)
+  {
+    $statement = $this->pdo->prepare("UPDATE todos SET status = NOT status WHERE id = :id");
+    $statement->bindValue('id', $id);
+    return $statement->execute();
+  }
 }
 
 return new Connection();

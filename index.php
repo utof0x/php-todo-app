@@ -24,8 +24,9 @@ $todos = $connection->getTodos();
     <div class="todos">
       <?php foreach($todos as $todo):?>
         <div class="todo">
-          <form class="status-form">
-            <input type="checkbox" checked>
+          <form class="status-form" action="set_status.php" method="post">
+            <input type="hidden" name="id" value="<?php echo $todo['id']?>">
+            <input class="status-input" type="checkbox" <?php echo $todo['status'] ? 'checked' : '' ?>>
           </form>
           <div>
             <h3 class="todo-name"><?php echo $todo['name']?></h3>
@@ -44,5 +45,10 @@ $todos = $connection->getTodos();
       <?php endforeach; ?>
     </div>
   </div>
+  <script>
+    document.querySelectorAll('.status-input').forEach(
+      input => input.addEventListener('change', () => {input.parentElement.submit()})
+    );
+  </script>
 </body>
 </html>
