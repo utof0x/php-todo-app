@@ -14,6 +14,22 @@ class Connection {
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  public function addTodo($todo)
+  {
+    $statement = $this->pdo->prepare("INSERT INTO todos (name, description, creation_date) VALUES (:name, :description, :creation_date)");
+    $statement->bindValue('name', $todo['name']);
+    $statement->bindValue('description', $todo['description']);
+    $statement->bindValue('creation_date', date('Y-m-d H:i:s'));
+    return $statement->execute();
+  }
+
+  public function deleteTodo($id)
+  {
+    $statement = $this->pdo->prepare("DELETE FROM todos WHERE id = :id");
+    $statement->bindValue('id', $id);
+    return $statement->execute();
+  }
 }
 
 return new Connection();

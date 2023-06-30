@@ -30,7 +30,8 @@ $todos = $connection->getTodos();
           <div>
             <h3 class="todo-name"><?php echo $todo['name']?></h3>
             <div class="todo-description"><?php echo $todo['description']?></div>
-            <form class="delete-form">
+            <form class="delete-form" action="delete_todo.php" method="post">
+              <input type="hidden" name="id" value="<?php echo $todo['id']?>">
               <button class="delete-button">
                 <img class="delete-image" alt="Trash can" src="./trash-can.svg" />
               </button>
