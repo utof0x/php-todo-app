@@ -3,6 +3,16 @@
 $connection = require_once './connection.php';
 $todos = $connection->getTodos();
 
+$currentTodo = [
+  'id' => '',
+  'name' => '',
+  'description' => '',
+  'status' => 0,
+];
+
+if (isset($_GET['id'])) {
+  $currentTodo = $connection->getTodoById($_GET['id']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,9 +27,28 @@ $todos = $connection->getTodos();
   <div class="content">
     <h1 class="title">TODO app</h1>
     <form class="new-todo-form" action="add_todo.php" method="post">
-      <input class="new-todo-input" type="text" name="name" placeholder="Task name">
-      <textarea class="new-todo-textarea" type="text" name="description" placeholder="Task description" ></textarea>
-      <button class="new-todo-button">Create task</button>
+      <input type="hidden" name="id" value="<?php echo $currentTodo['id'] ?>" />
+      <input
+        class="new-todo-input"
+        type="text"
+        name="name"
+        placeholder="Task name"
+        value="<?php echo $currentTodo['name'] ?>"
+      >
+      <textarea
+        class="new-todo-textarea"
+        type="text"
+        name="description"
+        placeholder="Task description"
+        value="<?php echo $currentTodo['description'] ?>"
+      ></textarea>
+      <button class="new-todo-button">
+        <?php if ($currentTodo['id']): ?>
+          Update TODO
+        <?php else: ?>
+          Create TODO
+        <?php endif ?>
+      </button>
     </form>
     <div class="todos">
       <?php foreach($todos as $todo):?>
@@ -37,7 +66,7 @@ $todos = $connection->getTodos();
                 <img class="delete-image" alt="Trash can" src="./trash-can.svg" />
               </button>
             </form>
-            <a href="" class="edit-wrapper">
+            <a href="?id=<?php echo $todo['id']?>" class="edit-wrapper">
               <img class="edit-image" alt="Trash can" src="./edit.svg" />
             </a>
           </div>

@@ -2,6 +2,10 @@
 
 $connection = require_once './connection.php';
 
-$connection->addTodo($_POST);
-
+$id = $_POST['id'] ?? '';
+if($id) {
+  $connection->updateTodo($id, $_POST);
+} else {
+  $connection->addTodo($_POST);
+}
 header('Location: index.php');

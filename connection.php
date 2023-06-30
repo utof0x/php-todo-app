@@ -37,6 +37,23 @@ class Connection {
     $statement->bindValue('id', $id);
     return $statement->execute();
   }
+
+  public function updateTodo($id, $todo)
+  {
+    $statement = $this->pdo->prepare("UPDATE todos SET name = :name, description = :description WHERE id = :id");
+    $statement->bindValue('id', $id);
+    $statement->bindValue('name', $todo['name']);
+    $statement->bindValue('description', $todo['description']);
+    return $statement->execute();
+  }
+
+  public function getTodoById($id)
+  {
+    $statement = $this->pdo->prepare("SELECT * FROM todos WHERE id = :id");
+    $statement->bindValue('id', $id);
+    $statement->execute();
+    return $statement->fetch(PDO::FETCH_ASSOC);
+  }
 }
 
 return new Connection();
